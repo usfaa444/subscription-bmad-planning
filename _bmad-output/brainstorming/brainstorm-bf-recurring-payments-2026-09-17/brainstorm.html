@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reminder, Then Pay — 17 September courtyard</title>
+<style>
+:root {
+  --laterite: #b4451c;
+  --laterite-deep: #6a220e;
+  --clay: #8d3a18;
+  --mango: #e07a2f;
+  --sahel: #c9a56a;
+  --dust: #e7d4b0;
+  --paper: #f4e7c8;
+  --receipt: #efe0b8;
+  --ink: #1b1008;
+  --ink-soft: #3d2a18;
+  --indigo: #17324f;
+  --indigo-deep: #0d1d30;
+  --orange: #f25c00;
+  --moov: #0a8a88;
+  --wave: #d4a400;
+  --ussd: #46f27a;
+  --ussd-dim: #1a8a42;
+  --night: #100b07;
+  --smoke: rgba(27, 16, 8, 0.08);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse at 12% 8%, rgba(224, 122, 47, 0.18), transparent 42%),
+    radial-gradient(ellipse at 88% 18%, rgba(23, 50, 79, 0.14), transparent 40%),
+    repeating-linear-gradient(90deg, transparent, transparent 47px, rgba(106, 34, 14, 0.03) 47px, rgba(106, 34, 14, 0.03) 48px),
+    linear-gradient(180deg, #f7edd4 0%, #e8d2a8 38%, #d9b57d 100%);
+  font: 17px/1.55 "Palatino Linotype", Palatino, "Book Antiqua", Georgia, "Times New Roman", serif;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.07;
+  background-image: repeating-linear-gradient(-28deg, #6a220e 0 1px, transparent 1px 11px);
+  z-index: 0;
+}
+a { color: inherit; }
+button { font: inherit; color: inherit; cursor: pointer; }
+.wrap { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; padding: 0 22px 80px; }
+
+/* Masthead: dusk courtyard, not a SaaS hero */
+.mast {
+  margin: 0 -22px 56px;
+  padding: 42px 22px 36px;
+  background:
+    linear-gradient(180deg, rgba(16, 11, 7, 0.15), transparent 28%),
+    linear-gradient(90deg, #6a220e 0%, #9a3a16 42%, #c45620 70%, #17324f 100%);
+  color: var(--paper);
+  border-bottom: 10px solid #0d1d30;
+  box-shadow: inset 0 -18px 40px rgba(16, 11, 7, 0.35);
+}
+.mast-inner { max-width: 1180px; margin: 0 auto; }
+.mast-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  font: 12px/1.3 "Courier New", Courier, monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.82;
+}
+.mast h1 {
+  margin: 18px 0 10px;
+  font-size: clamp(2.4rem, 7vw, 5.1rem);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+  text-wrap: balance;
+}
+.mast h1 em { font-style: italic; font-weight: 500; color: #f3d48a; }
+.lede {
+  max-width: 46rem;
+  font-size: 1.22rem;
+  line-height: 1.45;
+  color: #f6e6c6;
+}
+.rails {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 26px;
+}
+.rail {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px 6px 8px;
+  border: 1px solid rgba(244, 231, 200, 0.28);
+  background: rgba(16, 11, 7, 0.28);
+  font: 12px/1 "Courier New", Courier, monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.dot.or { background: var(--orange); }
+.dot.mv { background: var(--moov); }
+.dot.wv { background: var(--wave); }
+
+nav.jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: -28px 0 48px;
+}
+nav.jump a {
+  text-decoration: none;
+  padding: 7px 11px;
+  border: 1px solid #8d3a18;
+  background: var(--paper);
+  font: 11px/1 "Courier New", Courier, monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+nav.jump a:hover { background: var(--ink); color: var(--paper); }
+
+.hour {
+  margin: 0 0 88px;
+}
+.hour-head {
+  display: grid;
+  grid-template-columns: 88px 1fr;
+  gap: 18px;
+  align-items: end;
+  margin-bottom: 28px;
+  border-bottom: 3px solid var(--ink);
+  padding-bottom: 12px;
+}
+.hour-mark {
+  font: 700 42px/0.85 "Courier New", Courier, monospace;
+  color: var(--laterite-deep);
+}
+.hour-head h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 2.7rem);
+  line-height: 1.05;
+}
+.hour-head p { margin: 6px 0 0; color: var(--ink-soft); max-width: 46rem; }
+
+/* FIRST PRINCIPLES — carbon ledger */
+.fp { background: var(--indigo-deep); color: #f0e2c4; padding: 28px 22px 36px; margin: 0 -22px 88px; box-shadow: inset 0 0 0 8px #0a1624; }
+.fp .hour-head { border-color: #d4a400; color: #f0e2c4; }
+.fp .hour-mark { color: #d4a400; }
+.fp .hour-head p { color: #c9b48a; }
+.stones {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin: 22px 0 28px;
+}
+.stone {
+  min-height: 92px;
+  padding: 12px 10px;
+  background: #14283f;
+  border: 1px solid #d4a400;
+  font: 13px/1.3 "Courier New", Courier, monospace;
+}
+.stone b { display: block; color: #d4a400; letter-spacing: 0.12em; text-transform: uppercase; font-size: 10px; margin-bottom: 6px; }
+.track {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
+  margin: 8px 0 28px;
+  padding: 14px;
+  background: #0a1624;
+  border: 1px dashed #3d5a78;
+}
+.st {
+  padding: 8px 10px;
+  margin: 4px 0;
+  background: #1b1008;
+  color: var(--ussd);
+  font: 11px/1 "Courier New", Courier, monospace;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.st.fail { color: #f27a46; }
+.arrow { color: #8aa3b8; padding: 0 6px; font-family: "Courier New", Courier, monospace; }
+.cahiers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.cahier {
+  background: #efe0b8;
+  color: var(--ink);
+  padding: 16px 16px 18px;
+  box-shadow: 4px 4px 0 #0a1624;
+  background-image: repeating-linear-gradient(180deg, transparent 0 26px, rgba(23, 50, 79, 0.12) 26px 27px);
+}
+.cahier h3 {
+  margin: 0 0 10px;
+  font-size: 1.05rem;
+  border-bottom: 2px solid var(--laterite);
+  padding-bottom: 6px;
+}
+.cahier ul { margin: 0; padding: 0; list-style: none; }
+.cahier li { padding: 5px 0 5px 14px; position: relative; font-size: 0.92rem; }
+.cahier li::before { content: "▸"; position: absolute; left: 0; color: var(--laterite); }
+.ussd-row {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 16px;
+  margin-top: 22px;
+}
+.phone {
+  background: #0a0e0a;
+  color: var(--ussd);
+  font: 13px/1.45 "Courier New", Courier, monospace;
+  padding: 14px 14px 16px;
+  border: 6px solid #2a2a2a;
+  border-radius: 10px 10px 18px 18px;
+  box-shadow: 0 0 0 1px #111, 8px 10px 0 #06100a;
+  min-height: 260px;
+}
+.phone .bar { color: var(--ussd-dim); letter-spacing: 0.2em; font-size: 10px; margin-bottom: 8px; }
+.phone strong { color: #f3d48a; }
+.pinwall {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.scrap {
+  background: var(--receipt);
+  color: var(--ink);
+  padding: 11px 12px;
+  transform: rotate(-0.6deg);
+  box-shadow: 2px 2px 0 rgba(16, 11, 7, 0.35);
+  font-size: 0.9rem;
+}
+.scrap:nth-child(even) { transform: rotate(0.8deg); background: #f7ebc8; }
+.scrap em { display: block; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--laterite-deep); margin-bottom: 4px; font-style: normal; font-family: "Courier New", Courier, monospace; }
+
+/* JTBD — two-sided market loop */
+.loop-stage {
+  display: grid;
+  grid-template-columns: 1fr 280px 1fr;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 28px;
+}
+.side {
+  padding: 18px;
+  min-height: 220px;
+}
+.side.merch { background: var(--laterite-deep); color: var(--paper); }
+.side.cust { background: var(--indigo); color: var(--paper); }
+.side h3 { margin: 0 0 8px; font-size: 1.35rem; }
+.side p { margin: 0 0 10px; opacity: 0.9; }
+.side ul { margin: 0; padding-left: 1.1rem; }
+.orbit {
+  width: 280px;
+  height: 280px;
+  margin: 0 auto;
+  position: relative;
+}
+.orbit svg { width: 100%; height: 100%; display: block; }
+.hire-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.hire {
+  background: var(--paper);
+  border-left: 8px solid var(--laterite);
+  padding: 14px 14px 16px;
+  box-shadow: 0 1px 0 var(--sahel);
+}
+.hire.offline { border-left-color: var(--moov); }
+.hire.ocust { border-left-color: var(--orange); }
+.hire.scust { border-left-color: var(--wave); }
+.hire.plat { border-left-color: var(--indigo); grid-column: 1 / -1; }
+.hire h3 {
+  margin: 0 0 4px;
+  font: 11px/1.2 "Courier New", Courier, monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--laterite-deep);
+}
+.hire h4 { margin: 0 0 10px; font-size: 1.15rem; }
+.tickets { display: flex; flex-wrap: wrap; gap: 7px; }
+.ticket {
+  background: #fff8e4;
+  border: 1px dashed #8d3a18;
+  padding: 6px 8px;
+  font-size: 0.86rem;
+  max-width: 100%;
+}
+
+/* SCAMPER — seven dye vats / stall shutters */
+.scamper-stage {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  margin-bottom: 16px;
+}
+.shutter {
+  border: 0;
+  text-align: left;
+  padding: 0;
+  min-height: 150px;
+  position: relative;
+  color: var(--paper);
+  overflow: hidden;
+}
+.shutter span {
+  display: block;
+  padding: 12px 10px;
+  font: 700 2rem/1 "Courier New", Courier, monospace;
+}
+.shutter small {
+  display: block;
+  padding: 0 10px 12px;
+  font: 11px/1.25 "Courier New", Courier, monospace;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.shutter[data-lens="S"] { background: #17324f; }
+.shutter[data-lens="C"] { background: #8d3a18; }
+.shutter[data-lens="A"] { background: #0a8a88; }
+.shutter[data-lens="M"] { background: #f25c00; color: #1b1008; }
+.shutter[data-lens="P"] { background: #1b1008; }
+.shutter[data-lens="E"] { background: #6a220e; }
+.shutter[data-lens="R"] { background: #d4a400; color: #1b1008; }
+.shutter.active { outline: 3px solid var(--ink); z-index: 2; }
+.vat {
+  display: none;
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  padding: 18px 20px 20px;
+}
+.vat.show { display: block; }
+.vat h3 { margin: 0 0 8px; }
+.vat p.why { margin: 0 0 14px; color: var(--ink-soft); font-style: italic; }
+.lenses {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+.lens-card {
+  background: #fff8e4;
+  padding: 10px 12px;
+  border-top: 4px solid var(--laterite);
+  font-size: 0.92rem;
+}
+
+/* CONSTRAINT INVERSION — heavy blocks that become engines */
+.engines {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.engine {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  text-align: left;
+  perspective: 900px;
+  min-height: 240px;
+}
+.engine-inner {
+  position: relative;
+  min-height: 240px;
+  transform-style: preserve-3d;
+  transition: transform 0.55s ease;
+}
+.engine.flipped .engine-inner { transform: rotateY(180deg); }
+.face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  padding: 16px;
+}
+.face.front {
+  background: var(--laterite-deep);
+  color: var(--paper);
+  box-shadow: inset 0 0 0 4px #3d160c;
+}
+.face.back {
+  background: var(--paper);
+  color: var(--ink);
+  transform: rotateY(180deg);
+  border: 4px solid var(--laterite-deep);
+}
+.face .because {
+  font: 11px/1.2 "Courier New", Courier, monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+.face h3 { margin: 8px 0 10px; font-size: 1.25rem; }
+.face ul { margin: 0; padding-left: 1.05rem; font-size: 0.9rem; }
+.hint { margin-top: 12px; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; font-family: "Courier New", Courier, monospace; opacity: 0.7; }
+.wildcard {
+  margin-top: 16px;
+  padding: 16px 18px;
+  background: var(--indigo);
+  color: var(--paper);
+}
+.wildcard h3 { margin: 0 0 10px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  background: rgba(244, 231, 200, 0.12);
+  border: 1px solid rgba(244, 231, 200, 0.3);
+  padding: 8px 10px;
+  font-size: 0.88rem;
+  max-width: 22rem;
+}
+
+/* THEMES — compound courtyard */
+.compound {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(120px, auto);
+  gap: 8px;
+}
+.room {
+  padding: 12px 13px 14px;
+  background: var(--paper);
+  border: 1px solid #c9a56a;
+  position: relative;
+}
+.room:nth-child(4n) { background: #efe0b8; }
+.room:nth-child(5), .room:nth-child(10) { background: #17324f; color: var(--paper); border-color: #17324f; }
+.room:nth-child(8) { background: #8d3a18; color: var(--paper); border-color: #8d3a18; }
+.room b {
+  display: block;
+  font: 10px/1 "Courier New", Courier, monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  opacity: 0.7;
+}
+.room h3 { margin: 0 0 6px; font-size: 1.02rem; }
+.room p { margin: 0; font-size: 0.88rem; }
+
+/* SYNTHESIS — dusk terraces */
+.climax {
+  margin: 0 -22px;
+  padding: 48px 22px 64px;
+  background:
+    linear-gradient(180deg, #3d160c 0%, #1b1008 42%, #0d1d30 100%);
+  color: var(--paper);
+}
+.climax-inner { max-width: 1180px; margin: 0 auto; }
+.climax h2 {
+  margin: 0 0 10px;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 0.95;
+}
+.sentence {
+  max-width: 48rem;
+  font-size: 1.35rem;
+  line-height: 1.4;
+  color: #f3d48a;
+  margin: 0 0 28px;
+}
+.insights {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 36px;
+}
+.cut {
+  padding: 14px 14px 16px;
+  background: rgba(244, 231, 200, 0.06);
+  border-left: 4px solid #d4a400;
+  font-size: 0.95rem;
+}
+.spines {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 36px;
+}
+.spine {
+  padding: 14px;
+  background: rgba(242, 92, 0, 0.12);
+  border-top: 3px solid var(--orange);
+}
+.spine b {
+  display: block;
+  font: 10px/1 "Courier New", Courier, monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #f3d48a;
+  margin-bottom: 8px;
+}
+.terraces { display: grid; grid-template-columns: 1.15fr 1fr 0.9fr; gap: 10px; }
+.terrace { padding: 16px 16px 18px; }
+.terrace h3 { margin: 0 0 4px; font-size: 1.4rem; }
+.terrace .when {
+  font: 11px/1 "Courier New", Courier, monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  opacity: 0.7;
+}
+.terrace ul { margin: 0; padding-left: 1.1rem; font-size: 0.9rem; }
+.terrace.must { background: #f25c00; color: #1b1008; }
+.terrace.should { background: #d4a400; color: #1b1008; }
+.terrace.later { background: #17324f; color: var(--paper); }
+.sms {
+  margin: 28px 0 0;
+  max-width: 420px;
+  background: #efe0b8;
+  color: var(--ink);
+  padding: 14px 14px 8px;
+  box-shadow: 6px 6px 0 #0a1624;
+}
+.bubble { margin: 0 0 10px; padding: 8px 10px; font-size: 0.9rem; max-width: 92%; }
+.bubble.in { background: #fff8e4; border-left: 3px solid var(--orange); }
+.bubble.out { background: #17324f; color: var(--paper); margin-left: auto; border-right: 3px solid var(--moov); }
+.bubble .who { display: block; font: 10px/1 "Courier New", Courier, monospace; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; opacity: 0.65; }
+
+footer.colophon {
+  margin: 36px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid rgba(244, 231, 200, 0.2);
+  font: 12px/1.5 "Courier New", Courier, monospace;
+  opacity: 0.7;
+}
+
+@media (max-width: 960px) {
+  .stones, .cahiers, .loop-stage, .hire-grid, .scamper-stage, .lenses, .engines, .compound, .insights, .spines, .terraces, .ussd-row {
+    grid-template-columns: 1fr 1fr;
+  }
+  .loop-stage { grid-template-columns: 1fr; }
+  .orbit { order: -1; }
+  .scamper-stage { grid-template-columns: repeat(4, 1fr); }
+  .hire.plat { grid-column: auto; }
+}
+@media (max-width: 640px) {
+  .hour-head, .stones, .cahiers, .ussd-row, .pinwall, .hire-grid, .scamper-stage, .lenses, .engines, .compound, .insights, .spines, .terraces {
+    grid-template-columns: 1fr;
+  }
+  .scamper-stage { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="mast">
+  <div class="mast-inner">
+    <div class="mast-meta">
+      <span>Ouagadougou · 17 September 2026</span>
+      <span>204 ideas · 4 sittings · 14 rooms</span>
+      <span>Headless courtyard · BF first</span>
+    </div>
+    <h1>Reminder,<br><em>then pay.</em></h1>
+    <p class="lede">A standing promise, not a wallet pull. The day’s thinking left this courtyard: hosted checkout on one wall, SMS and USSD on the other, laterite underfoot, three rails waiting like coins on a stall — Orange, Moov, Wave — and cash still a first-class neighbour.</p>
+    <div class="rails">
+      <span class="rail"><i class="dot or"></i> Orange Money</span>
+      <span class="rail"><i class="dot mv"></i> Moov Money</span>
+      <span class="rail"><i class="dot wv"></i> Wave</span>
+      <span class="rail">XOF · MSISDN · French first</span>
+      <span class="rail">Cleaning · tutoring · rent · school · gym · mosque</span>
+    </div>
+  </div>
+</header>
+
+<nav class="jump" aria-label="Sittings">
+  <a href="#first-principles">Dawn · First Principles</a>
+  <a href="#jtbd">Heat · Job to Be Done</a>
+  <a href="#scamper">Dyes · SCAMPER</a>
+  <a href="#constraint">Weight · Constraint Inversion</a>
+  <a href="#compound">14 rooms</a>
+  <a href="#climax">Dusk · Synthesis</a>
+</nav>
+
+<section class="fp hour" id="first-principles">
+  <div class="hour-head">
+    <div class="hour-mark">01</div>
+    <div>
+      <h2>First Principles · the carbon ledger</h2>
+      <p>Before features, bedrock. A subscription is five primitives only. Everything else is packaging. The money itself is a state machine that does not care whether the customer is on a feature phone in Secteur 15 or a Flutter app.</p>
+    </div>
+  </div>
+
+  <div class="stones" aria-label="Five primitives">
+    <div class="stone"><b>01</b>Promise</div>
+    <div class="stone"><b>02</b>Schedule</div>
+    <div class="stone"><b>03</b>Payment instruction</div>
+    <div class="stone"><b>04</b>Record</div>
+    <div class="stone"><b>05</b>Reminder</div>
+  </div>
+
+  <p style="margin:0 0 8px;font:12px/1 Courier New,Courier,monospace;letter-spacing:.12em;text-transform:uppercase;color:#d4a400;">Gateway-agnostic ledger events</p>
+  <div class="track" aria-label="Money movement states">
+    <span class="st">intent</span><span class="arrow">→</span>
+    <span class="st">authorized</span><span class="arrow">→</span>
+    <span class="st">collected</span><span class="arrow">→</span>
+    <span class="st">settled</span>
+    <span class="arrow"> / </span>
+    <span class="st fail">failed</span>
+    <span class="arrow"> / </span>
+    <span class="st fail">refunded</span>
+    <span class="arrow"> / </span>
+    <span class="st fail">written-off</span>
+  </div>
+  <p style="margin:0 0 8px;font:12px/1 Courier New,Courier,monospace;letter-spacing:.12em;text-transform:uppercase;color:#d4a400;">Checkout is a channel-agnostic state machine — web, USSD, or SMS wizard</p>
+  <div class="track">
+    <span class="st">identify</span><span class="arrow">→</span>
+    <span class="st">consent</span><span class="arrow">→</span>
+    <span class="st">method</span><span class="arrow">→</span>
+    <span class="st">confirm</span>
+  </div>
+
+  <div class="cahiers">
+    <article class="cahier">
+      <h3>Rails &amp; technical bedrock</h3>
+      <ul>
+        <li>Recurring is a standing customer authorization plus a scheduled obligation — pulls barely exist on BF MoMo.</li>
+        <li>The primitive is reminder-then-pay: invoice → SMS/USSD → confirm → wallet debit → merchant credit.</li>
+        <li>Each MNO is a settlement adapter behind one collect-once interface. Orange, Moov, Wave interchangeable.</li>
+        <li>Leave a vacant DirectDebitPort so PI-SPI can later upgrade reminder-pay to A2A debit without changing merchant contracts.</li>
+        <li>Separate the plan (what is owed) from the collection method (cash, MoMo, future bank debit).</li>
+        <li>Currency is a tenant/country attribute, not a hardcoded XOF constant, even while launching BF-only.</li>
+        <li>Phone number — MSISDN plus country code — is the customer primary key, not email.</li>
+        <li>Merchant identity is a registered business plus one payout destination, not a website.</li>
+        <li>Idempotent collection tokens: retries, double-SMS, webhook replays cannot double-charge.</li>
+        <li>One event bus. API merchants get webhooks; portal merchants get the same events in-app and SMS.</li>
+      </ul>
+    </article>
+    <article class="cahier">
+      <h3>Merchant operational jobs</h3>
+      <ul>
+        <li>Bedrock job: stop chasing weekly or monthly money without hiring a collector.</li>
+        <li>Ship a living receivables book — who owes what, by when, who is late — not a generic subscription dashboard.</li>
+        <li>Proof-of-payment the merchant can show when a customer claims they already paid.</li>
+        <li>Register a client in under 60 seconds with only a name and a phone number.</li>
+        <li>Pause, skip, or prorate a cycle when service was not delivered — missed clean, gym closed, school holiday.</li>
+        <li>Make payout timing explicit: customer paid versus merchant received, with a visible settlement clock.</li>
+        <li>Grace periods and late fees as configurable policy, not custom code per merchant.</li>
+        <li>Failed-collection inbox: retry, switch rail, or mark cash without leaving the list.</li>
+        <li>Informal merchants start without a tax ID, with a later formalize path.</li>
+        <li>Clone a plan — weekly cleaning, 5,000 XOF — across many clients without retyping terms.</li>
+        <li>Bilingual customer messages (French plus Mooré/Dioula) that merchants do not compose themselves.</li>
+        <li>Employee/collector role: mark collected without seeing settings or payout details.</li>
+      </ul>
+    </article>
+    <article class="cahier">
+      <h3>Customer experiential jobs</h3>
+      <ul>
+        <li>Bedrock job: stay in good standing with a trusted provider without walking to a kiosk every cycle.</li>
+        <li>One SMS screen must answer: what am I paying, to whom, how often, how much, by when.</li>
+        <li>Pick Orange versus Moov versus Wave based on which wallet has money today — not a locked-in rail.</li>
+        <li>A forwardable receipt the customer can send to a spouse or keep as proof.</li>
+        <li>A “not this week” pause that does not brand them a permanent defaulter.</li>
+        <li>Switch payment method mid-subscription without cancelling and re-enrolling.</li>
+        <li>Cancel from the phone without visiting the shop, with instant merchant notification.</li>
+        <li>Shared-phone households: authorize a payer who is not the service beneficiary.</li>
+        <li>Family or group pay: one wallet covers several children or compound members.</li>
+        <li>French-first copy with optional local language; never English-default amounts or dollar signs.</li>
+        <li>Feature-phone USSD path that completes the same consent as the hosted web page.</li>
+        <li>Show the next debit or due date before it happens so future auto-debit is never a surprise.</li>
+      </ul>
+    </article>
+  </div>
+
+  <div class="ussd-row">
+    <div class="phone" aria-label="Feature-phone USSD path">
+      <div class="bar">USSD · *789*12#</div>
+      <div><strong>AWA MENAGE</strong><br>Secteur 15, Ouaga<br><br>5 000 F CFA<br>chaque lundi<br>avant 18h<br><br>1 PAYER<br>2 PAUSE<br>3 AGENT<br><br><span style="color:#1a8a42">same consent<br>as the hosted page</span></div>
+    </div>
+    <div class="pinwall">
+      <div class="scrap"><em>Trust / cash / failure</em>Checkout shows the merchant’s name and neighbourhood plus a regulated-looking receipt. Platform brand is secondary.</div>
+      <div class="scrap"><em>Cash is not an apology</em>Merchant marks paid-cash and the ledger stays complete. Cash remains a first-class collection method.</div>
+      <div class="scrap"><em>No bureau here</em>Default risk from on-platform payment history, not a credit bureau this segment does not have.</div>
+      <div class="scrap"><em>Dispute primitive</em>Customer flags “I did not get service” and the next collection freezes pending merchant reply.</div>
+      <div class="scrap"><em>Loyalty, rebuilt</em>Prepaid credit plus recurring top-up — not points theater.</div>
+      <div class="scrap"><em>Social contract</em>Private, shame-free reminders by default. Optional public standing only if the merchant asks.</div>
+      <div class="scrap"><em>Identity proof</em>“This phone paid this merchant before” — not government KYC on day one for small amounts.</div>
+      <div class="scrap"><em>Failure default</em>When a rail is down, the obligation remains. Only the collection attempt failed.</div>
+      <div class="scrap"><em>The hidden product</em>Settlement finality. If the merchant cannot trust the money arrived, no feature above it matters.</div>
+    </div>
+  </div>
+</section>
+
+<section class="hour" id="jtbd">
+  <div class="hour-head">
+    <div class="hour-mark">02</div>
+    <div>
+      <h2>Job to Be Done · the two-sided loop</h2>
+      <p>Stop chasing money, and stay in good standing, are the same loop seen from two stalls. Hire us for the shame-free receivables book plus the reminder-then-pay action — not for a dashboard that looks like San Francisco.</p>
+    </div>
+  </div>
+
+  <div class="loop-stage">
+    <article class="side merch">
+      <h3>Merchant hires us to</h3>
+      <p>stop chasing weekly or monthly money without hiring a collector.</p>
+      <ul>
+        <li>Collect today for the clients who always forget</li>
+        <li>Automatic invoice SMS — stop typing reminders at 06:00</li>
+        <li>Agent / collector mode: a nephew visits and marks cash</li>
+        <li>Proof-for-landlord exports: water, compound security</li>
+      </ul>
+    </article>
+    <div class="orbit" aria-hidden="true">
+      <svg viewBox="0 0 280 280" role="img">
+        <title>Merchant and customer jobs as one loop</title>
+        <circle cx="140" cy="108" r="78" fill="none" stroke="#b4451c" stroke-width="10"/>
+        <circle cx="140" cy="172" r="78" fill="none" stroke="#17324f" stroke-width="10"/>
+        <circle cx="140" cy="140" r="22" fill="#f4e7c8" stroke="#1b1008" stroke-width="3"/>
+        <text x="140" y="136" text-anchor="middle" font-size="9" font-family="Courier New, Courier, monospace" fill="#1b1008">REMIND</text>
+        <text x="140" y="148" text-anchor="middle" font-size="9" font-family="Courier New, Courier, monospace" fill="#1b1008">THEN PAY</text>
+        <text x="140" y="34" text-anchor="middle" font-size="11" font-family="Palatino Linotype, Palatino, serif" fill="#6a220e">receivables book</text>
+        <text x="140" y="258" text-anchor="middle" font-size="11" font-family="Palatino Linotype, Palatino, serif" fill="#17324f">good standing</text>
+      </svg>
+    </div>
+    <article class="side cust">
+      <h3>Customer hires us to</h3>
+      <p>stay in good standing without walking to a kiosk every cycle.</p>
+      <ul>
+        <li>Pay with the wallet already in the pocket</li>
+        <li>Share the pay-link with whoever holds the money this month</li>
+        <li>Pause for travel, Ramadan, or school holiday without calling the shop</li>
+        <li>An SMS that says exactly what to type, or which USSD to dial</li>
+      </ul>
+    </article>
+  </div>
+
+  <div class="hire-grid">
+    <article class="hire">
+      <h3>Online / API merchants</h3>
+      <h4>Look like Stripe in a week, not a quarter.</h4>
+      <div class="tickets">
+        <span class="ticket">Hosted checkout keeps wallet secrets and PIN flows off the merchant’s servers.</span>
+        <span class="ticket">Webhooks unlock premium the moment collection clears.</span>
+        <span class="ticket">Plan-catalog API: monthly, annual, usage-like plans from their own UI.</span>
+        <span class="ticket">A customer billing-portal link so they never build “update my payment method.”</span>
+        <span class="ticket">Sandbox plus simulated wallets — QA never uses live Orange Money.</span>
+        <span class="ticket">Dunning API: failed payments retry without the merchant writing cron jobs.</span>
+        <span class="ticket">iOS, Android, and web share one merchant account.</span>
+        <span class="ticket">Localized checkout — French, XOF, MoMo brand marks — so conversion does not die on a card-shaped form.</span>
+        <span class="ticket">MRR, churn, failed-collection analytics a founder can show a partner.</span>
+      </div>
+    </article>
+    <article class="hire offline">
+      <h3>Offline / portal merchants</h3>
+      <h4>Subscribe a cleaning client without downloading any app.</h4>
+      <div class="tickets">
+        <span class="ticket">SMS onboarding for cleaning and tutor clients.</span>
+        <span class="ticket">Portal that works from a cybercafé PC or a mid-range Android browser.</span>
+        <span class="ticket">Bulk import from a notebook photo or an Excel of names and phones.</span>
+        <span class="ticket">Two-way SMS / WhatsApp: client replies OUI to pay.</span>
+        <span class="ticket">Printed shop QR that opens the customer’s current bill.</span>
+        <span class="ticket">Plan-template marketplace: weekly maid, school-fees term, mosque due, gym month.</span>
+        <span class="ticket">Later split-payout when there is a partner or franchise cut.</span>
+        <span class="ticket">“I am not a tech person”: photo of ID, talk-to-agent, we configure the plan.</span>
+      </div>
+    </article>
+    <article class="hire ocust">
+      <h3>Online customers</h3>
+      <h4>Finish in under two minutes on mid-range Android over 3G.</h4>
+      <div class="tickets">
+        <span class="ticket">Create no new account — use the wallet already in use.</span>
+        <span class="ticket">Save this method: next month is one tap or one USSD confirm.</span>
+        <span class="ticket">A consumer home that lists every subscription across merchants on this platform.</span>
+        <span class="ticket">Grace: dispute or delay and still keep access for N days.</span>
+        <span class="ticket">Spoken or written amount confirmation before any wallet PIN is entered.</span>
+      </div>
+    </article>
+    <article class="hire scust">
+      <h3>Offline and SMS-first customers</h3>
+      <h4>A short code saved in contacts as Loyer or Menage.</h4>
+      <div class="tickets">
+        <span class="ticket">Voice IVR when reading a portal is too much.</span>
+        <span class="ticket">A neighbourhood agent who can take cash and mark me paid.</span>
+        <span class="ticket">Family-head view: pay three sisters’ salon or school plans from one phone.</span>
+        <span class="ticket">Reminder the day before due — load the wallet, not the morning of.</span>
+        <span class="ticket">Send-me-my-balance on demand via SMS keyword.</span>
+        <span class="ticket">An opt-out that actually works — regulatory and trust.</span>
+        <span class="ticket">Confirmation SMS whose merchant name matches the shop I already know.</span>
+        <span class="ticket">WhatsApp photo-receipt for people who will never open the web portal.</span>
+      </div>
+    </article>
+    <article class="hire plat">
+      <h3>Platform, regulator, expansion</h3>
+      <h4>Jobs the courtyard also hired, quieter, at the back wall.</h4>
+      <div class="tickets">
+        <span class="ticket">A country pack: new MNO, currency, language, KYC rules, without rewriting billing.</span>
+        <span class="ticket">PI-SPI / BCEAO readiness: be the first recurring layer when the public API opens.</span>
+        <span class="ticket">Regulator-friendly audit trail for a future e-money or payment-institution license.</span>
+        <span class="ticket">Merchant trust via take-rate-after-success or transparent settlement — not opaque holds.</span>
+        <span class="ticket">Ouaga and Abidjan developers: docs, Postman, Laravel and Flutter samples.</span>
+        <span class="ticket">Later org-payers: school canteen, mutuelle, church tithe — institutions, not just SMEs.</span>
+        <span class="ticket">Associations and guilds — coiffeuses, gyms, private schools — as the distribution job, not Facebook ads.</span>
+        <span class="ticket">A bank or MNO as silent partner: they want SME recurring volume; we want rails.</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="hour" id="scamper">
+  <div class="hour-head">
+    <div class="hour-mark">03</div>
+    <div>
+      <h2>SCAMPER · seven dye vats</h2>
+      <p>Afternoon in the market of substitutions. Each shutter is a lens. Open one. The stall behind it is not a feature list — it is a way of remaking checkout, receipts, risk, and the very idea of who initiates the bill.</p>
+    </div>
+  </div>
+
+  <div class="scamper-stage" role="tablist" aria-label="SCAMPER lenses">
+    <button class="shutter active" data-lens="S" role="tab" aria-selected="true" aria-controls="vat-S"><span>S</span><small>Substitute</small></button>
+    <button class="shutter" data-lens="C" role="tab" aria-selected="false" aria-controls="vat-C"><span>C</span><small>Combine</small></button>
+    <button class="shutter" data-lens="A" role="tab" aria-selected="false" aria-controls="vat-A"><span>A</span><small>Adapt</small></button>
+    <button class="shutter" data-lens="M" role="tab" aria-selected="false" aria-controls="vat-M"><span>M</span><small>Modify / Magnify</small></button>
+    <button class="shutter" data-lens="P" role="tab" aria-selected="false" aria-controls="vat-P"><span>P</span><small>Put to other uses</small></button>
+    <button class="shutter" data-lens="E" role="tab" aria-selected="false" aria-controls="vat-E"><span>E</span><small>Eliminate</small></button>
+    <button class="shutter" data-lens="R" role="tab" aria-selected="false" aria-controls="vat-R"><span>R</span><small>Reverse</small></button>
+  </div>
+
+  <div id="vat-S" class="vat show" role="tabpanel">
+    <h3>Substitute — checkout, receipts, identity</h3>
+    <p class="why">Card PANs, email receipts, merchant-built UI, passwords, and a pooled payout wallet are the wrong objects for this street.</p>
+    <div class="lenses">
+      <div class="lens-card">Card PAN forms become a wallet picker plus USSD / PIN handoff.</div>
+      <div class="lens-card">Email receipts become SMS plus WhatsApp, and an optional PDF for the few who want it.</div>
+      <div class="lens-card">Merchant-built UI becomes hosted checkout — redirect or iframe — and an optional white-label domain.</div>
+      <div class="lens-card">Monthly invoice becomes a prepaid merchant-wallet that auto-refills at a threshold.</div>
+      <div class="lens-card">Customer portal passwords become a magic SMS link that expires.</div>
+      <div class="lens-card">Our pooled payout wallet becomes the merchant’s existing Orange Business or Wave merchant code.</div>
+    </div>
+  </div>
+  <div id="vat-C" class="vat" role="tabpanel" hidden>
+    <h3>Combine — billing, channels, risk</h3>
+    <p class="why">One SMS should not be a reminder. It should be a complete journey. Channels split by job, not by fashion.</p>
+    <div class="lenses">
+      <div class="lens-card">Invoice + payment link + USSD code in a single SMS.</div>
+      <div class="lens-card">Loyalty stamp-card with a recurring plan: 10th clean free, still monthly.</div>
+      <div class="lens-card">API merchant and portal merchant in one account: start on portal, add the API later.</div>
+      <div class="lens-card">Billing calendar combined with national holidays and end-of-month salary cycles.</div>
+      <div class="lens-card">Checkout combined with KYC-lite only when amount or risk crosses a threshold.</div>
+      <div class="lens-card">SMS for action, WhatsApp for receipt, email for the developer.</div>
+    </div>
+  </div>
+  <div id="vat-A" class="vat" role="tabpanel" hidden>
+    <h3>Adapt — regional and cultural patterns</h3>
+    <p class="why">Steal mental models that already live in West African hands: paybill, airtime stars, tontine, term fees, super-agents.</p>
+    <div class="lenses">
+      <div class="lens-card">Adapt Stripe Checkout Session: createSession → hosted URL → webhook. Identical mental model.</div>
+      <div class="lens-card">Adapt M-Pesa paybill / till-number as a BF merchant “receive number.”</div>
+      <div class="lens-card">Adapt airtime short codes: *XXX*plan# to subscribe or pay.</div>
+      <div class="lens-card">Adapt tontine / e-susu rotating savings as a first-class recurring product type.</div>
+      <div class="lens-card">Adapt school-fees installment culture into term-peaked scheduled plans.</div>
+      <div class="lens-card">Adapt Orange / Moov super-agent networks as cash-in ramps when wallet balance is short.</div>
+    </div>
+  </div>
+  <div id="vat-M" class="vat" role="tabpanel" hidden>
+    <h3>Modify / Magnify — dunning, trust, developer hands</h3>
+    <p class="why">A single reminder is a whisper. A cadence is a street. Trust is a cheap thermal badge that says PAID.</p>
+    <div class="lenses">
+      <div class="lens-card">Magnify reminders into a cadence: J-3 SMS, J-1 WhatsApp, J0 USSD push, J+2 merchant call list.</div>
+      <div class="lens-card">Modify amounts with family tiers, sliding scale, and rainy-season pause discounts.</div>
+      <div class="lens-card">Magnify trust with a cheap Bluetooth / thermal “PAID” badge the merchant can print in-shop.</div>
+      <div class="lens-card">Modify checkout into two steps: consent now, first collection on the due date — no immediate charge.</div>
+      <div class="lens-card">Magnify developer UX: one cURL, one webhook, copy-paste Laravel and Flutter samples.</div>
+      <div class="lens-card">Modify the portal for shared devices: staff PIN, short session, no wallet secrets on screen.</div>
+    </div>
+  </div>
+  <div id="vat-P" class="vat" role="tabpanel" hidden>
+    <h3>Put to other uses</h3>
+    <p class="why">The same checkout, the same SMS, the same ledger — sent into rent, DSTV-like bouquets, B2B credit, the shop floor.</p>
+    <div class="lenses">
+      <div class="lens-card">Put the same checkout on one-off invoices so merchants start with “send a bill” before subscriptions.</div>
+      <div class="lens-card">Put SMS onboarding onto rent, water, guards, mosque, gym, private school, DSTV-like bouquets.</div>
+      <div class="lens-card">Put the ledger onto merchant-to-merchant supplier credit — B2B recurring.</div>
+      <div class="lens-card">Put the hosted page in-person: merchant SMS-es the link while the customer is in the shop.</div>
+      <div class="lens-card">Put gateway abstraction onto payouts later — salary-like recurring out.</div>
+      <div class="lens-card">Put the client directory to work as a mini-CRM: last service, notes, birthday, preferred rail.</div>
+    </div>
+  </div>
+  <div id="vat-E" class="vat" role="tabpanel" hidden>
+    <h3>Eliminate</h3>
+    <p class="why">What we refuse to ship is also a product decision. English. Card-network logos. Dollar signs. Passwords. Native apps for offline merchants.</p>
+    <div class="lenses">
+      <div class="lens-card">Eliminate customer passwords — phone OTP or magic link only.</div>
+      <div class="lens-card">Eliminate native apps for offline merchants — mobile web plus PWA only.</div>
+      <div class="lens-card">Eliminate mandatory pay-now at subscribe; enroll first, debit on the agreed date.</div>
+      <div class="lens-card">Eliminate English, card-network logos, and $ defaults from every first-run screen.</div>
+      <div class="lens-card">Eliminate multi-page wizards: one screen for the plan, one screen to pay.</div>
+      <div class="lens-card">Eliminate platform-held customer balances if regulation allows pass-through settlement.</div>
+    </div>
+  </div>
+  <div id="vat-R" class="vat" role="tabpanel" hidden>
+    <h3>Reverse</h3>
+    <p class="why">Silence means success. The customer pulls the bill. The merchant is free until the first successful collection. BF is just the first country pack.</p>
+    <div class="lenses">
+      <div class="lens-card">Reverse initiation: customer pulls the bill they owe — self-serve pay — instead of only being chased.</div>
+      <div class="lens-card">Reverse pricing: merchants free until first successful collection; take-rate after.</div>
+      <div class="lens-card">Reverse onboarding: customer invites a merchant (“I want to pay you monthly”) as demand-side growth.</div>
+      <div class="lens-card">Reverse notifications: silence means success; ping only on failure or change.</div>
+      <div class="lens-card">Reverse country expansion: ship adapter interfaces first; BF is just the first country pack.</div>
+      <div class="lens-card">Reverse dunning: reward early pay with airtime or an extra visit, not only punish late.</div>
+      <div class="lens-card">Reverse hosted checkout: stay on the merchant site via a pay-sheet web component.</div>
+      <div class="lens-card">Reverse fraud defaults: known payers are frictionless; new phones need extra OTP plus merchant confirm.</div>
+    </div>
+  </div>
+</section>
+
+<section class="hour" id="constraint">
+  <div class="hour-head">
+    <div class="hour-mark">04</div>
+    <div>
+      <h2>Constraint Inversion · weight as engine</h2>
+      <p>An invented sitting: treat each hard constraint as a generative frame, not a limiter. Tap a laterite block. It turns over. Because literacy is low, because SMS is the OS, because PI-SPI is not out — therefore the product.</p>
+    </div>
+  </div>
+
+  <div class="engines">
+    <button class="engine" type="button">
+      <div class="engine-inner">
+        <div class="face front">
+          <div class="because">Because</div>
+          <h3>Literacy is low</h3>
+          <p>Smartphones are scarce. Feature phones dominate. Many businesses are one person. Trust is often oral.</p>
+          <div class="hint">Tap — invert into engine</div>
+        </div>
+        <div class="face back">
+          <div class="because">Therefore</div>
+          <h3>USSD + voice first</h3>
+          <ul>
+            <li>USSD plus voice IVR is the primary subscribe path; web is the fallback.</li>
+            <li>Merchant photo, color, and icons on a lightweight landing — almost no text.</li>
+            <li>Train the merchant to finish enrollment in person on the customer’s own phone.</li>
+            <li>Call-me-to-finish-signup queues a human or agent.</li>
+            <li>Confirm amounts by repeating them in words in French and a local language.</li>
+            <li>Numeric reply codes only: 1 pay, 2 pause, 3 agent — no URL required.</li>
+            <li>Paper membership card with QR plus short code at enrollment.</li>
+            <li>Family-scribe mode: one literate payer manages many dependents.</li>
+          </ul>
+        </div>
+      </div>
+    </button>
+    <button class="engine" type="button">
+      <div class="engine-inner">
+        <div class="face front">
+          <div class="because">Because</div>
+          <h3>SMS is the OS</h3>
+          <p>Costly. Fallible. Already understood as a conversation. The last message must be enough to recover state.</p>
+          <div class="hint">Tap — invert into engine</div>
+        </div>
+        <div class="face back">
+          <div class="because">Therefore</div>
+          <h3>Every action is a verb</h3>
+          <ul>
+            <li>Every product action has an SMS verb: PAY, PAUSE, SOLDE, AIDE, STOP.</li>
+            <li>One message must carry invoice + link + USSD in a compressed journey.</li>
+            <li>Merchants buy message bundles, or we fold cost into the take-rate.</li>
+            <li>Flash SMS, USSD push, and WhatsApp as a mesh — not a single channel.</li>
+            <li>The entire billing state machine is recoverable from the last message.</li>
+            <li>Store the conversation thread as the audit log customers already understand.</li>
+            <li>Localize keywords — OUI / PAYER plus Mooré / Dioula verbs — per language pack.</li>
+            <li>The merchant portal is also a compose-campaign tool for custom reminders.</li>
+          </ul>
+        </div>
+      </div>
+    </button>
+    <button class="engine" type="button">
+      <div class="engine-inner">
+        <div class="face front">
+          <div class="because">Because</div>
+          <h3>Multi-MNO money</h3>
+          <p>Wallets do not interoperate cleanly. Rails flake. Pay-in and payout MNOs may differ. Wave can appear in thirty days.</p>
+          <div class="hint">Tap — invert into engine</div>
+        </div>
+        <div class="face back">
+          <div class="because">Therefore</div>
+          <h3>Pick the rail at pay time</h3>
+          <ul>
+            <li>Pick the rail at each payment, not only at subscribe time.</li>
+            <li>Hide MNOs behind one PaymentIntent; map errors into human French.</li>
+            <li>Fail over inside the same session: Orange timeout → offer Moov.</li>
+            <li>Own the interop hop or wait for PI-SPI — do not pretend it is instant.</li>
+            <li>Show remaining KYC / daily limit before the customer confirms.</li>
+            <li>Adding a rail is a config deploy, not a release train.</li>
+            <li>Show nearest cash-in agent when wallet balance is insufficient.</li>
+            <li>Merchant prefers one rail or accepts any — preference is policy, not code.</li>
+          </ul>
+        </div>
+      </div>
+    </button>
+    <button class="engine" type="button">
+      <div class="engine-inner">
+        <div class="face front">
+          <div class="because">Because</div>
+          <h3>No PI-SPI API yet</h3>
+          <p>BCEAO moves slowly. Auto-debit is not honest marketing. The vacant port is the bet.</p>
+          <div class="hint">Tap — invert into engine</div>
+        </div>
+        <div class="face back">
+          <div class="because">Therefore</div>
+          <h3>Stockpile consented mandates</h3>
+          <ul>
+            <li>Ship reminder-pay now; keep DirectDebitPort implemented as a no-op adapter.</li>
+            <li>Collect consent copy today that will also cover future A2A debit.</li>
+            <li>Become the best-documented WAEMU recurring layer — the obvious integrator.</li>
+            <li>Simulate direct debit in sandbox so developers do not rewrite later.</li>
+            <li>Align IDs and data model with likely BCEAO scheme identifiers now.</li>
+            <li>Use existing merchant-initiated MoMo APIs wherever they already allow collection.</li>
+            <li>Never market auto-debit. Market on-time collection.</li>
+            <li>Country → scheme → rail → adapter. PI-SPI is one future scheme.</li>
+          </ul>
+        </div>
+      </div>
+    </button>
+    <button class="engine" type="button">
+      <div class="engine-inner">
+        <div class="face front">
+          <div class="because">Because</div>
+          <h3>Trust and fraud</h3>
+          <p>SIM-swap. Fake portals. Employees who steal. Disputes that are social, not court-based. The platform itself could be the fraudster.</p>
+          <div class="hint">Tap — invert into engine</div>
+        </div>
+        <div class="face back">
+          <div class="because">Therefore</div>
+          <h3>Named SMS, guilds, clocks</h3>
+          <ul>
+            <li>Every SMS shows merchant legal name, neighbourhood, and a verifiable code.</li>
+            <li>Bind high-value plans to PIN plus last-payment device or extra OTP.</li>
+            <li>Verified badge and a public short code customers can check.</li>
+            <li>Role-based cash-marking with daily close and variance alerts.</li>
+            <li>In-app mediation with a short frozen-funds window.</li>
+            <li>Launch through guilds and associations rather than cold digital ads.</li>
+            <li>Merchants mark “known customer” from an existing WhatsApp relationship.</li>
+            <li>Publish live status plus delayed-payout transparency.</li>
+          </ul>
+        </div>
+      </div>
+    </button>
+    <button class="engine" type="button">
+      <div class="engine-inner">
+        <div class="face front">
+          <div class="because">Because</div>
+          <h3>Cash is default</h3>
+          <p>Payday is roughly the 26th to the 5th. Compounds collect together. Shame is a product bug.</p>
+          <div class="hint">Tap — invert into engine</div>
+        </div>
+        <div class="face back">
+          <div class="because">Therefore</div>
+          <h3>Hybrid plans, cash-day</h3>
+          <ul>
+            <li>Hybrid plans: cash for two months, then graduate to MoMo.</li>
+            <li>Collector flow with offline mark-paid and later sync.</li>
+            <li>The cultural proof object is a printed or SMS receipt, not an email invoice.</li>
+            <li>Do not shame cash payers; they keep the same standing as MoMo payers.</li>
+            <li>Align collection windows with payday (roughly the 26th to the 5th).</li>
+            <li>Savings-toward-due: tiny daily MoMo into a bill envelope.</li>
+            <li>Tontine-style group collection for compounds.</li>
+            <li>A merchant cash-day calendar tells them who to visit today.</li>
+          </ul>
+        </div>
+      </div>
+    </button>
+  </div>
+
+  <aside class="wildcard">
+    <h3>Because expansion is later — and other weights that still generate</h3>
+    <div class="chips">
+      <span class="chip">Isolate strings, rails, KYC, and holiday calendars behind CountryPack.</span>
+      <span class="chip">MSISDN parsing and wallet prefixes are data, never if-Burkina branches.</span>
+      <span class="chip">Leave tax / e-invoicing hooks empty but present (DGI now, others later).</span>
+      <span class="chip">Design a Côte d’Ivoire country pack on paper as the shadow second market.</span>
+      <span class="chip">Pricing, contracts, and legal entity are per-country.</span>
+      <span class="chip">One merchant group can run BF plus future CI with separate payout wallets.</span>
+      <span class="chip">PI-SPI scheme readiness is the expansion strategy, not a BF-only feature.</span>
+      <span class="chip">Prefer local MoMo aggregators over direct-integrating every new country rail.</span>
+      <span class="chip">Keep a compliance calendar: BF license versus UEMOA passporting questions.</span>
+      <span class="chip">All IDs are country-prefixed so tenants never collide when markets merge.</span>
+      <span class="chip">A boutique or school can share one tablet kiosk as the checkout terminal.</span>
+      <span class="chip">Treat *shortcode# as equal to https checkout, not a degraded mode.</span>
+      <span class="chip">A recorded voice confirmation — “you will pay 5,000 every Monday to Awa Cleaning” — is a feature.</span>
+      <span class="chip">Checkout and collector mark-paid must queue offline and reconcile.</span>
+      <span class="chip">Onboarding must complete in one sitting under 15 minutes.</span>
+      <span class="chip">Women run many informal services: design for shared phones, privacy, and a trusted female support line.</span>
+      <span class="chip">Youth developers exist in Ouaga — the API channel is also a distribution channel.</span>
+      <span class="chip">BCEAO moves slowly: the winner already has consented recurring mandates when the switch flips.</span>
+    </div>
+  </aside>
+</section>
+
+<section class="hour" id="compound">
+  <div class="hour-head">
+    <div class="hour-mark">14</div>
+    <div>
+      <h2>Affinity courtyard · fourteen rooms</h2>
+      <p>Divergence closed at 204 ideas. Convergence first move: cluster the field. Walk the compound. Each room holds a family, not a backlog dump.</p>
+    </div>
+  </div>
+  <div class="compound">
+    <article class="room"><b>Room 01</b><h3>Collection Primitive</h3><p>Standing authorization. Reminder-then-pay. Obligation survives a failed rail. Enroll first; debit on the agreed date.</p></article>
+    <article class="room"><b>Room 02</b><h3>Dual-channel Access</h3><p>Hosted Checkout Session and merchant portal / SMS are two skins over one consent state machine and one event bus.</p></article>
+    <article class="room"><b>Room 03</b><h3>Identity &amp; Household</h3><p>MSISDN as primary key. Shared phones. Family-head and family-scribe. Authorize a payer who is not the beneficiary. Magic link, not passwords.</p></article>
+    <article class="room"><b>Room 04</b><h3>Merchant Receivables OS</h3><p>Living book: who owes what, by when, who is late. Clone a plan. Pause, skip, prorate. Failed-collection inbox. Settlement clock.</p></article>
+    <article class="room"><b>Room 05</b><h3>Rail Abstraction &amp; PI-SPI</h3><p>Collect-once interface. Vacant DirectDebitPort. Country → scheme → rail → adapter. Never if-Burkina. Simulate debit in sandbox.</p></article>
+    <article class="room"><b>Room 06</b><h3>Notifications Mesh</h3><p>SMS for action, WhatsApp for receipt, email for the developer. J-3 / J-1 / J0 / J+2 cadence. Silence means success.</p></article>
+    <article class="room"><b>Room 07</b><h3>Trust / Fraud / Proof</h3><p>Named SMS. Neighbourhood on the receipt. Thermal PAID badge. Guilds over ads. Known-customer whitelist. Daily close and variance.</p></article>
+    <article class="room"><b>Room 08</b><h3>Cash Culture Hybrid</h3><p>Cash first-class, same standing as MoMo. Hybrid plans. Cash-day calendar. Payday windows 26th–5th. Graduate cash payers — that is the growth loop.</p></article>
+    <article class="room"><b>Room 09</b><h3>Developer Experience</h3><p>Stripe mental model. Sandbox wallets. Laravel and Flutter samples. One cURL, one webhook. Ouaga youth as a distribution channel.</p></article>
+    <article class="room"><b>Room 10</b><h3>Informal Onboarding</h3><p>No tax ID at start. Sub-15-minute sitting. Photo of ID, talk-to-agent. Notebook-photo import. Cybercafé PC is a valid office.</p></article>
+    <article class="room"><b>Room 11</b><h3>Vertical Templates</h3><p>Weekly maid. School-fees term. Mosque due. Gym month. Rent, water, guards, DSTV-like bouquets. Later: tontine, canteen, mutuelle, tithe.</p></article>
+    <article class="room"><b>Room 12</b><h3>Platform Economics &amp; Growth</h3><p>Take-rate after first success. Guilds and associations. Send-a-bill as quieter wedge. Customer-invites-merchant waits until people already pay through us.</p></article>
+    <article class="room"><b>Room 13</b><h3>Multi-country Architecture</h3><p>CountryPack skeleton now. CI on paper as shadow second market. Per-country legal entity and payout wallets. Country-prefixed IDs.</p></article>
+    <article class="room"><b>Room 14</b><h3>Literacy-first UX</h3><p>USSD and IVR as primary path. Numeric codes 1 / 2 / 3. Amounts spoken in words. Paper membership card. *shortcode# equals https.</p></article>
+  </div>
+</section>
+</div>
+
+<section class="climax" id="climax">
+  <div class="climax-inner">
+    <h2>Dusk · the courtyard closes</h2>
+    <p class="sentence">Build the receivables-and-consent OS for Burkina Faso. Render it as Stripe-like checkout and as SMS / USSD. Collect via reminder-pay on Orange first. Leave the sockets open for every other rail, language, country, and future PI-SPI debit.</p>
+
+    <div class="insights">
+      <article class="cut">API versus portal is one product with two skins over the same checkout state machine and event bus. Splitting them into two systems would duplicate the real work.</article>
+      <article class="cut">Merchant job “stop chasing money” and customer job “stay in good standing” are the same loop: a shame-free receivables book plus a reminder-then-pay action.</article>
+      <article class="cut">No PI-SPI API is the wedge, not a hole. Reminder-pay is the honest BF primitive and stockpiles consented mandates that become the PI-SPI moat.</article>
+      <article class="cut">Hosted web, USSD, SMS verbs, and IVR are renderers of one consent protocol. Literacy constraints force that unification.</article>
+      <article class="cut">Cash as a first-class method is how informal merchants enter. Graduating cash payers to MoMo is the growth loop, not a v2 apology.</article>
+      <article class="cut">CountryPack plus rail adapters honor “multi-country from day one” without building Côte d’Ivoire. BF is the first pack, not the schema.</article>
+      <article class="cut">Stripe-like DX wins app merchants; 15-minute portal wins offline. One account that starts portal and later adds the API is the bridge.</article>
+      <article class="cut">Trust artifacts — named SMS, matching shop name, receipts, guilds, payout clock — will out-convert extra features in a cash culture.</article>
+      <article class="cut">Settlement finality (customer paid versus merchant received) is the hidden make-or-break. A pretty checkout that leaves money in limbo fails the bedrock job.</article>
+      <article class="cut">One-off “send a bill” is a quieter wedge than “start a subscription” for merchants who have never billed digitally.</article>
+      <article class="cut">Customer-invites-merchant and a cross-merchant consumer home are the same later bet: demand-side growth only after people already pay through us.</article>
+      <article class="cut">SCAMPER Reverse — silence equals success, take-rate after first collect, no auto-debit marketing — protects trust while Constraint Inversion makes SMS / USSD the OS.</article>
+    </div>
+
+    <div class="spines">
+      <article class="spine"><b>Chosen spine</b>Dual-channel receivables plus reminder-pay on one live rail, with a channel-agnostic consent state machine.</article>
+      <article class="spine"><b>Architecture bet to carry</b>Rail adapters, vacant DirectDebitPort, CountryPack. Do not encode if-Burkina.</article>
+      <article class="spine"><b>Go-to-market wedge</b>Offline SMS merchants plus send-a-bill, then subscriptions. Guilds over ads. Developers as the online-merchant channel.</article>
+      <article class="spine"><b>Deferred moat</b>Consented recurring mandates plus a PI-SPI-shaped sandbox, marketed as on-time collection, never as auto-debit.</article>
+    </div>
+
+    <div class="terraces">
+      <article class="terrace must">
+        <h3>MVP</h3>
+        <div class="when">Must · Burkina first · one live rail</div>
+        <ul>
+          <li>Hosted Checkout Session plus webhooks</li>
+          <li>French MoMo checkout — no cards</li>
+          <li>Merchant portal: plans, clients by phone, SMS invite</li>
+          <li>Reminder-then-pay</li>
+          <li>Ledger separating plan from collection</li>
+          <li>Magic-link / OTP identity</li>
+          <li>One live rail — Orange Money — behind a rail adapter</li>
+          <li>SMS invoice that states what / whom / when / how much</li>
+          <li>Cash mark-paid</li>
+          <li>Idempotent collection tokens</li>
+          <li>CountryPack skeleton + XOF + MSISDN keys</li>
+          <li>Sandbox</li>
+          <li>Basic pause / skip</li>
+          <li>SMS receipt</li>
+          <li>Staff PIN on shared devices</li>
+          <li>Future-debit-capable consent copy</li>
+          <li>Take-rate after first success</li>
+          <li>Sub-15-minute merchant onboarding</li>
+          <li>Failed-collection retry inbox</li>
+          <li>Zero English / dollar / card-logo defaults</li>
+        </ul>
+      </article>
+      <article class="terrace should">
+        <h3>Next</h3>
+        <div class="when">Should · widen the mesh</div>
+        <ul>
+          <li>Moov + Wave + in-session failover</li>
+          <li>WhatsApp receipts + IVR</li>
+          <li>Escalating dunning + payday windows</li>
+          <li>Collector offline cash + cash-day calendar</li>
+          <li>Family / group pay + share-pay-link</li>
+          <li>Consumer multi-subscription home</li>
+          <li>One-off invoices as wedge</li>
+          <li>Vertical plan templates</li>
+          <li>PWA + shop QR + paper membership card</li>
+          <li>Payout to merchant’s own MoMo code</li>
+          <li>MRR / churn analytics</li>
+          <li>Laravel / Flutter samples</li>
+          <li>Dispute freeze</li>
+          <li>Mooré / Dioula keywords</li>
+          <li>Guild launch</li>
+          <li>API + portal, one account</li>
+          <li>Thermal receipt</li>
+          <li>MNO limit display</li>
+          <li>Known-customer whitelist</li>
+        </ul>
+      </article>
+      <article class="terrace later">
+        <h3>Later</h3>
+        <div class="when">Won’t this time · sockets stay empty</div>
+        <ul>
+          <li>Live PI-SPI direct debit</li>
+          <li>Second-country pack in production</li>
+          <li>Tontine product</li>
+          <li>B2B supplier credit</li>
+          <li>NGO / government payers</li>
+          <li>Customer-invites-merchant growth</li>
+          <li>Split / franchise payouts</li>
+          <li>Credit scoring</li>
+          <li>Payment-institution license</li>
+          <li>Recurring payouts / salary</li>
+          <li>Savings-toward-due envelopes</li>
+          <li>Prepaid auto-refill wallets</li>
+          <li>Tax / e-invoicing</li>
+          <li>White-label domains</li>
+          <li>Per-country aggregators as a product</li>
+          <li>Voice-mandate as legal instrument</li>
+          <li>Women-support line as standalone product</li>
+          <li>Super-App consumer wallet</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="sms" aria-label="The conversation as audit log">
+      <div class="bubble in"><span class="who">Awa Ménage · Secteur 15</span>5 000 F CFA lundi. *789*12# — ou répondez OUI.</div>
+      <div class="bubble out"><span class="who">Customer</span>OUI</div>
+      <div class="bubble in"><span class="who">Receipt</span>Reçu 5 000. Prochaine: 24 sept. Silence = succès.</div>
+    </div>
+
+    <footer class="colophon">
+      Keepsake of a completed BMAD brainstorm · 17 September 2026 · 204 ideas across First Principles, Job to Be Done, SCAMPER, and Constraint Inversion · intent document is the only downstream handoff seed · no product brief opened in this sitting.
+    </footer>
+  </div>
+</section>
+
+<script>
+(function () {
+  var shutters = document.querySelectorAll(".shutter");
+  var vats = document.querySelectorAll(".vat");
+  shutters.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var id = "vat-" + btn.getAttribute("data-lens");
+      shutters.forEach(function (b) {
+        b.classList.toggle("active", b === btn);
+        b.setAttribute("aria-selected", b === btn ? "true" : "false");
+      });
+      vats.forEach(function (vat) {
+        var on = vat.id === id;
+        vat.classList.toggle("show", on);
+        if (on) vat.removeAttribute("hidden");
+        else vat.setAttribute("hidden", "");
+      });
+    });
+  });
+  document.querySelectorAll(".engine").forEach(function (card) {
+    card.addEventListener("click", function () {
+      card.classList.toggle("flipped");
+    });
+  });
+}());
+</script>
+</body>
+</html>

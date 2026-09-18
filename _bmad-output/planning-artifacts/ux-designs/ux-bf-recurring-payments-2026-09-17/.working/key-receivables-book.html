@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Accueil — Carnet des encaissements</title>
+  <style>
+    /* Spine refs: DESIGN.md Components (receivables row, payout-clock, status-pill, kyc-banner, cash mark-paid).
+       EXPERIENCE.md IA Accueil, State Patterns, Payout Clock, Flow 4 UJ-4, Shame-free collections. */
+    :root {
+      --surface: #F7F4EE;
+      --raised: #FFFFFF;
+      --ink: #1C1915;
+      --muted: #534E45;
+      --border: #C9C1B2;
+      --primary: #3F5A3A;
+      --primary-fg: #FFFFFF;
+      --accent: #A65D28;
+      --success: #1F4D32;
+      --late: #8A3B12;
+      --pending: #5C4A28;
+      --hold: #6B3A12;
+      --fail: #8B1E1E;
+      --radius: 12px;
+      --tap: 44px;
+      --font: ui-sans-serif, system-ui, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: var(--font); background: #d8d2c6; color: var(--ink); }
+    .page { max-width: 480px; margin: 0 auto; padding: 24px 16px 48px; }
+    h1.doc { font-size: 15px; font-weight: 650; margin: 0 0 8px; }
+    p.cap { font-size: 13px; color: var(--muted); margin: 0 0 20px; }
+    .phone { width: 390px; background: #1c1915; border-radius: 28px; padding: 12px; box-shadow: 0 12px 40px rgba(28,25,21,0.18); }
+    .screen { background: var(--surface); border-radius: 20px; min-height: 780px; overflow: hidden; display: flex; flex-direction: column; }
+    .status { height: 28px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; font-size: 12px; font-weight: 600; }
+    header.app { padding: 8px 16px 12px; }
+    header.app .shop { font-size: 13px; color: var(--muted); }
+    header.app h2 { margin: 4px 0 0; font-size: 22px; }
+    .banner {
+      margin: 0 16px 12px;
+      background: #F4E4D4;
+      color: var(--hold);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 14px;
+    }
+    .banner strong { display: block; margin-bottom: 2px; }
+    .clock {
+      margin: 0 16px 16px;
+      background: var(--raised);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px;
+    }
+    .clock h3 { margin: 0 0 10px; font-size: 14px; }
+    .clock .row { display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; font-size: 15px; }
+    .clock .ok { color: var(--success); font-weight: 650; }
+    .clock .wait { color: var(--pending); font-weight: 650; }
+    .clock .note { font-size: 12px; color: var(--muted); margin-top: 6px; }
+    main { padding: 0 16px 16px; flex: 1; }
+    .sec { font-size: 13px; font-weight: 650; color: var(--muted); margin: 8px 0; }
+    .item {
+      background: var(--raised);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+    }
+    .item .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+    .item .name { font-weight: 650; font-size: 16px; }
+    .amt { font-weight: 650; font-size: 16px; white-space: nowrap; }
+    .msisdn { font-size: 13px; color: var(--muted); margin: 2px 0 8px; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 650;
+      border-radius: 999px;
+      padding: 4px 10px;
+      border: 1px solid currentColor;
+    }
+    .pill.pending { color: var(--pending); }
+    .pill.late { color: var(--late); }
+    .pill.fail { color: var(--fail); }
+    .pill.paid { color: var(--success); }
+    .actions { display: flex; gap: 8px; margin-top: 10px; }
+    .actions button {
+      flex: 1;
+      min-height: var(--tap);
+      border-radius: var(--radius);
+      font: 650 14px var(--font);
+      border: 1px solid var(--border);
+      background: var(--raised);
+      color: var(--ink);
+    }
+    .actions button.clay {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    footer.tabs {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      border-top: 1px solid var(--border);
+      background: var(--raised);
+      min-height: 58px;
+    }
+    footer.tabs span {
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; font-weight: 650; color: var(--muted); text-align: center; padding: 4px;
+    }
+    footer.tabs span.active { color: var(--primary); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1 class="doc">Accueil — Receivables Book</h1>
+    <p class="cap">Canonical mixed book: pending consent (not owed), failed Friday (Échec + retry/cash), paid cash, late without a shame ranking. Payout Clock split. KYC banner optional-off in this sitting (shown as load-bearing alternate at top, muted copy).</p>
+    <div class="phone" aria-label="Carnet des encaissements">
+      <div class="screen">
+        <div class="status"><span>18:42</span><span>3G · 51%</span></div>
+        <header class="app">
+          <div class="shop">Awa — Nettoyage, Dapoya</div>
+          <h2>Accueil</h2>
+        </header>
+        <div class="banner">
+          <strong>Paiements retenus — les factures continuent.</strong>
+          Seuil 500 000 F CFA ce mois. Déposez NINEA, RCCM ou CNIB dans Paramètres.
+        </div>
+        <div class="clock">
+          <h3>Horloge des versements</h3>
+          <div class="row"><span>Client payé aujourd’hui</span><span class="ok">2 000 F CFA</span></div>
+          <div class="row"><span>Vous recevez</span><span class="wait">en attente de règlement</span></div>
+          <div class="note">Cible T+1, pas une garantie. Dernier rail : Orange · collected</div>
+        </div>
+        <main>
+          <div class="sec">En attente de consentement</div>
+          <div class="item">
+            <div class="top">
+              <div class="name">Mariam Sawadogo</div>
+              <div class="amt">2 000 F CFA</div>
+            </div>
+            <div class="msisdn">+226 76 22 11 00 · chaque vendredi</div>
+            <span class="pill pending">● En attente de consentement</span>
+          </div>
+          <div class="sec">À encaisser</div>
+          <div class="item">
+            <div class="top">
+              <div class="name">Fatou Ouédraogo</div>
+              <div class="amt">2 000 F CFA</div>
+            </div>
+            <div class="msisdn">+226 70 12 34 56 · vendredi 18 sept.</div>
+            <span class="pill fail">▲ Échec · Orange n’a pas confirmé</span>
+            <div class="actions">
+              <button type="button">Réessayer</button>
+              <button class="clay" type="button">Marquer payé</button>
+            </div>
+          </div>
+          <div class="item">
+            <div class="top">
+              <div class="name">Issa Kaboré</div>
+              <div class="amt">15 000 F CFA</div>
+            </div>
+            <div class="msisdn">+226 65 01 02 03 · lundi 14 sept.</div>
+            <span class="pill late">■ En retard</span>
+            <div class="actions">
+              <button class="clay" type="button">Marquer payé</button>
+            </div>
+          </div>
+          <div class="sec">Récent</div>
+          <div class="item">
+            <div class="top">
+              <div class="name">Fatou — espèces</div>
+              <div class="amt">2 000 F CFA</div>
+            </div>
+            <div class="msisdn">Marqué payé hier · reçu déjà en main</div>
+            <span class="pill paid">✓ Payé</span>
+          </div>
+        </main>
+        <footer class="tabs">
+          <span class="active">Accueil</span>
+          <span>Clients</span>
+          <span>Plans</span>
+          <span>Encaissements</span>
+          <span>Paramètres</span>
+        </footer>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

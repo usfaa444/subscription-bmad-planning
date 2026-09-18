@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SMS — Fatou PAY puis reçu</title>
+  <style>
+    /* Spine refs: DESIGN.md sms bubbles, verb chips, Typography.sms.
+       EXPERIENCE.md SMS IA, canonical bodies, Consent mapping, Flow 2 UJ-2, STOP ≠ ANNULER. */
+    :root {
+      --surface: #F7F4EE;
+      --raised: #FFFFFF;
+      --ink: #1C1915;
+      --muted: #534E45;
+      --border: #C9C1B2;
+      --primary: #3F5A3A;
+      --out: #E6EDE4;
+      --success: #1F4D32;
+      --radius: 16px;
+      --font: ui-sans-serif, system-ui, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: var(--font); background: #d8d2c6; color: var(--ink); }
+    .page { max-width: 860px; margin: 0 auto; padding: 24px 16px 48px; }
+    h1.doc { font-size: 15px; font-weight: 650; margin: 0 0 8px; }
+    p.cap { font-size: 13px; color: var(--muted); margin: 0 0 20px; max-width: 720px; }
+    .frames { display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; }
+    .phone { width: 390px; background: #1c1915; border-radius: 28px; padding: 12px; box-shadow: 0 12px 40px rgba(28,25,21,0.18); }
+    .screen { background: var(--surface); border-radius: 20px; min-height: 740px; overflow: hidden; display: flex; flex-direction: column; }
+    .status { height: 28px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; font-size: 12px; font-weight: 600; }
+    .sms-head {
+      background: var(--raised);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 16px 12px;
+    }
+    .sms-head .from { font-size: 13px; color: var(--muted); }
+    .sms-head h2 { margin: 2px 0 0; font-size: 18px; }
+    .thread { flex: 1; padding: 12px 12px 16px; display: flex; flex-direction: column; gap: 10px; }
+    .bubble {
+      max-width: 86%;
+      padding: 10px 12px;
+      border-radius: var(--radius);
+      font-size: 16px;
+      line-height: 1.45;
+      border: 1px solid var(--border);
+    }
+    .in { align-self: flex-start; background: var(--raised); }
+    .out { align-self: flex-end; background: var(--out); }
+    .time { font-size: 11px; color: var(--muted); margin-top: 6px; }
+    .verb {
+      display: inline-block;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      border-radius: 999px;
+      padding: 2px 8px;
+      background: #d7e2d4;
+    }
+    .legend {
+      margin: 8px 4px 0;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .composer {
+      background: var(--raised);
+      border-top: 1px solid var(--border);
+      padding: 10px 12px 14px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .composer span {
+      flex: 1;
+      min-height: 44px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .send {
+      min-width: 44px; min-height: 44px;
+      border-radius: 12px;
+      background: var(--primary);
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 650;
+    }
+    .ok { color: var(--success); font-weight: 650; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1 class="doc">SMS OS — Fatou (UJ-2)</h1>
+    <p class="cap">Canonical: Invite → SMS Invoice (six answers) → PAY → OTP → SMS Receipt, then silence. Alternate thread: AIDE + STOP disclosure. Feature-phone voice, no app chrome beyond a transcript frame.</p>
+    <div class="frames">
+      <div class="phone" aria-label="Fil PAY puis reçu">
+        <div class="screen">
+          <div class="status"><span>19:08</span><span>Orange · 2G</span></div>
+          <div class="sms-head">
+            <div class="from">SMS</div>
+            <h2>Awa — Nettoyage</h2>
+          </div>
+          <div class="thread">
+            <div class="bubble in">
+              Awa — Nettoyage, Ouaga<br />
+              Paiement hebdomadaire 2 000 F CFA, chaque vendredi.<br />
+              Répondez <span class="verb">PAY</span> ou ouvrez le lien.<br />
+              <span class="verb">STOP</span> n’annule pas. Pour arrêter : <span class="verb">ANNULER</span>
+              <div class="time">ven. 10:02 · Invitation</div>
+            </div>
+            <div class="bubble in">
+              Awa — Nettoyage<br />
+              Nettoyage hebdomadaire — 2 000 F CFA<br />
+              Échéance : vendredi 18 sept.<br />
+              Répondez <span class="verb">PAY</span> pour confirmer
+              <div class="time">ven. 18:01 · Facture</div>
+            </div>
+            <div class="bubble out">
+              <span class="verb">PAY</span>
+              <div class="time">ven. 19:02</div>
+            </div>
+            <div class="bubble in">
+              Code : 418 092 — valable 15 min.<br />
+              Confirmez ensuite sur Orange Money.
+              <div class="time">ven. 19:02 · Identité</div>
+            </div>
+            <div class="bubble out">418092<div class="time">ven. 19:03</div></div>
+            <div class="bubble in">
+              <span class="ok">Reçu — Awa — Nettoyage</span><br />
+              2 000 F CFA reçus le 17 sept.<br />
+              Prochaine échéance : vendredi 25 sept.
+              <div class="time">ven. 19:04 · Un seul reçu. Puis silence.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="phone" aria-label="AIDE et STOP">
+        <div class="screen">
+          <div class="status"><span>19:10</span><span>Orange · 2G</span></div>
+          <div class="sms-head">
+            <div class="from">SMS</div>
+            <h2>Awa — Nettoyage</h2>
+          </div>
+          <div class="thread">
+            <div class="bubble out"><span class="verb">AIDE</span><div class="time">ven. 19:09</div></div>
+            <div class="bubble in">
+              <span class="verb">PAY</span> payer · <span class="verb">SOLDE</span> voir l’échéance · <span class="verb">PAUSE</span> / <span class="verb">REPRENDRE</span><br />
+              <span class="verb">ANNULER</span> arrêter le plan<br />
+              <span class="verb">STOP</span> arrêter les messages facultatifs (les factures continuent)<br />
+              STOP n’est pas ANNULER
+              <div class="time">ven. 19:09</div>
+            </div>
+            <div class="bubble out"><span class="verb">STOP</span><div class="time">ven. 19:10</div></div>
+            <div class="bubble in">
+              Messages facultatifs arrêtés.<br />
+              Les factures, rappels de paiement, échecs et reçus continuent.<br />
+              Pour arrêter le plan : <span class="verb">ANNULER</span>
+              <div class="time">ven. 19:10</div>
+            </div>
+            <p class="legend">Deuxième STOP sous 24 h = consignes ANNULER seulement. Pas de nouvelle facture.</p>
+          </div>
+          <div class="composer">
+            <span>SOLDE</span>
+            <div class="send">OK</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

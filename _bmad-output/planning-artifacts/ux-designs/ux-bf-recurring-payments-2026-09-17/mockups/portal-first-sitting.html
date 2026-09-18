@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Premier entretien — Portail marchand</title>
+  <style>
+    /* Spine refs: DESIGN.md Brand & Style, Colors, Typography, Layout, Components (button-primary, trust).
+       EXPERIENCE.md Foundation, IA first sitting, Flow 1 UJ-1, Interaction Primitives (MSISDN-first). */
+    :root {
+      --surface: #F7F4EE;
+      --raised: #FFFFFF;
+      --ink: #1C1915;
+      --muted: #534E45;
+      --border: #C9C1B2;
+      --primary: #3F5A3A;
+      --primary-fg: #FFFFFF;
+      --accent: #A65D28;
+      --pending: #5C4A28;
+      --radius: 12px;
+      --tap: 44px;
+      --font: ui-sans-serif, system-ui, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      background: #d8d2c6;
+      color: var(--ink);
+    }
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+    }
+    h1.doc { font-size: 15px; font-weight: 650; margin: 0 0 8px; }
+    p.cap { font-size: 13px; color: var(--muted); margin: 0 0 20px; max-width: 720px; }
+    .frames { display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; }
+    .phone {
+      width: 390px;
+      background: #1c1915;
+      border-radius: 28px;
+      padding: 12px;
+      box-shadow: 0 12px 40px rgba(28,25,21,0.18);
+    }
+    .screen {
+      background: var(--surface);
+      border-radius: 20px;
+      min-height: 720px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .status {
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    header.app {
+      padding: 8px 16px 12px;
+    }
+    header.app .shop { font-size: 13px; color: var(--muted); }
+    header.app h2 { margin: 4px 0 0; font-size: 22px; line-height: 1.25; }
+    .step { font-size: 13px; color: var(--muted); margin-top: 4px; }
+    .bar {
+      display: flex;
+      gap: 6px;
+      padding: 0 16px 12px;
+    }
+    .bar i {
+      flex: 1;
+      height: 6px;
+      border-radius: 99px;
+      background: var(--border);
+    }
+    .bar i.on { background: var(--primary); }
+    main { padding: 0 16px 16px; flex: 1; }
+    label { display: block; font-size: 14px; font-weight: 600; margin: 14px 0 6px; }
+    input, select {
+      width: 100%;
+      min-height: var(--tap);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0 12px;
+      font: 16px/1.5 var(--font);
+      background: var(--raised);
+      color: var(--ink);
+    }
+    .hint { font-size: 13px; color: var(--muted); margin: 6px 0 0; }
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: var(--tap);
+      background: var(--primary);
+      color: var(--primary-fg);
+      border: 0;
+      border-radius: var(--radius);
+      font: 600 16px var(--font);
+      width: 100%;
+      margin-top: 20px;
+    }
+    .btn.ghost {
+      background: var(--raised);
+      color: var(--ink);
+      border: 1px solid var(--border);
+      margin-top: 8px;
+    }
+    .card {
+      background: var(--raised);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px;
+      margin-top: 12px;
+    }
+    .card strong { display: block; font-size: 16px; }
+    .card span { font-size: 13px; color: var(--muted); }
+    .pill {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--pending);
+      border: 1px solid var(--pending);
+      border-radius: 999px;
+      padding: 4px 10px;
+      margin-top: 8px;
+    }
+    footer.tabs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--border);
+      background: var(--raised);
+      min-height: 56px;
+    }
+    footer.tabs span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+    footer.tabs span.active { color: var(--primary); }
+    .pin {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .pin b {
+      min-height: var(--tap);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--raised);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 18px;
+    }
+    .dots { display: flex; gap: 8px; justify-content: center; margin: 12px 0; }
+    .dots u { width: 12px; height: 12px; border-radius: 50%; background: var(--primary); text-decoration: none; }
+    .dots u.empty { background: var(--border); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1 class="doc">Portail — premier entretien (UJ-1 Awa)</h1>
+    <p class="cap">Canonical: last step of first sitting — Client Record + invite confirm. Alternate: Staff PIN offered before leaving the shared machine. French, MSISDN-first, one primary verb per screen.</p>
+    <div class="frames">
+      <div class="phone" aria-label="Créer la fiche client">
+        <div class="screen">
+          <div class="status"><span>21:14</span><span>3G · 64%</span></div>
+          <header class="app">
+            <div class="shop">Awa — Nettoyage, Dapoya</div>
+            <h2>Ajouter un client</h2>
+            <div class="step">Étape 4 sur 4 — Fiche client</div>
+          </header>
+          <div class="bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
+          <main>
+            <label for="nom">Nom</label>
+            <input id="nom" value="Fatou Ouédraogo" />
+            <label for="tel">Numéro (MSISDN)</label>
+            <input id="tel" inputmode="tel" value="+226 70 12 34 56" />
+            <p class="hint">Un numéro = une fiche. Doublon refusé clairement.</p>
+            <div class="card">
+              <strong>Invitation SMS</strong>
+              <span>Fatou recevra le nom de votre commerce, 2 000 F CFA chaque vendredi, et comment payer. Rien n’est dû avant son accord.</span>
+            </div>
+            <button class="btn" type="button">Inviter Fatou</button>
+            <button class="btn ghost" type="button">Enregistrer sans inviter</button>
+          </main>
+        </div>
+      </div>
+      <div class="phone" aria-label="Code équipe proposé">
+        <div class="screen">
+          <div class="status"><span>21:16</span><span>3G · 64%</span></div>
+          <header class="app">
+            <div class="shop">Awa — Nettoyage, Dapoya</div>
+            <h2>Protéger cet appareil</h2>
+            <div class="step">Recommandé — téléphone partagé</div>
+          </header>
+          <main>
+            <p class="hint" style="margin-top:0">Le neveu utilise le même téléphone. Un code équipe est demandé pour marquer payé, réessayer, ou voir une clé API.</p>
+            <div class="dots" aria-label="Code à 4 chiffres"><u></u><u></u><u class="empty"></u><u class="empty"></u></div>
+            <div class="pin" aria-label="Pavé numérique">
+              <b>1</b><b>2</b><b>3</b><b>4</b><b>5</b><b>6</b><b>7</b><b>8</b><b>9</b><b></b><b>0</b><b>⌫</b>
+            </div>
+            <button class="btn" type="button">Enregistrer le code</button>
+            <button class="btn ghost" type="button">Plus tard</button>
+          </main>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
