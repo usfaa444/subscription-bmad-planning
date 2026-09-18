@@ -1,17 +1,28 @@
 ---
-title: BF Recurring Payments
+title: Sarati
 status: final
 created: 2026-09-17
-updated: 2026-09-17
+updated: 2026-09-18
 ---
 
-# PRD: BF Recurring Payments
+# PRD: Sarati
 
-*Working title for the Burkina Faso–first receivables-and-consent platform. No consumer brand is locked.*
+*Burkina Faso–first receivables-and-consent platform. Product name locked as **Sarati**; primary domain **sarati.net**.*
+
+## Product identity
+
+| | |
+| --- | --- |
+| **Product name** | **Sarati** |
+| **Etymology** | Dioula/Jula — *sarati* means agreement / contract / terms |
+| **Primary domain** | **sarati.net** (purchased by the product owner) |
+| **Market** | Burkina Faso first; multi-country / multi-currency architecture later |
+| **Planning repo** | https://github.com/usfaa444/subscription-bmad-planning |
+| **Local folder slug** | `bf-recurring-payments` (document content and titles use Sarati) |
 
 ## 0. Document Purpose
 
-This is the founder launch PRD for **bf-recurring-payments**. It is written for internal planning and is the source of product truth for UX, architecture, and epics. Structure: Glossary-anchored vocabulary, named user journeys, features with globally numbered functional requirements (FR-1…), globally numbered cross-cutting non-functional requirements (NFR-1…), and success metrics that cite those IDs. Capabilities only — transport, adapter counterparties, and storage live in `addendum.md`. It builds on `_bmad-output/planning-artifacts/briefs/brief-bf-recurring-payments-2026-09-17/` and `docs/system-idea.md`; it does not replace the brief as historical record. Product-owner decisions that closed brief open questions are locked here and in `.memlog.md`.
+This is the founder launch PRD for **Sarati**. It is written for internal planning and is the source of product truth for UX, architecture, and epics. Structure: Glossary-anchored vocabulary, named user journeys, features with globally numbered functional requirements (FR-1…), globally numbered cross-cutting non-functional requirements (NFR-1…), and success metrics that cite those IDs. Capabilities only — transport, adapter counterparties, and storage live in `addendum.md`. It builds on `_bmad-output/planning-artifacts/briefs/brief-bf-recurring-payments-2026-09-17/` and `docs/system-idea.md`; it does not replace the brief as historical record. Product-owner decisions that closed brief open questions are locked here and in `.memlog.md`.
 
 ## 1. Vision
 

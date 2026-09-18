@@ -1,4 +1,8 @@
-# System Idea — bf-recurring-payments
+# System Idea — Sarati
+
+**Product:** Sarati · **Domain:** [sarati.net](https://sarati.net) (acquired by the product owner) · **Etymology:** Dioula/Jula — *sarati* means agreement / contract / terms.
+
+---
 
 Build a platform in Burkina Faso that allows businesses to offer subscriptions and recurring payments to their customers. Example: a business owner might have a loyalty program or a service requiring clients to subscribe to a monthly payment. Right now there is no simple way for anyone in Burkina Faso to set this up; they would have to build the entire system themselves from scratch.
 

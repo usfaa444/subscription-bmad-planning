@@ -7,16 +7,16 @@ inputDocuments:
   - _bmad-output/planning-artifacts/ux-designs/ux-bf-recurring-payments-2026-09-17/DESIGN.md
   - _bmad-output/planning-artifacts/ux-designs/ux-bf-recurring-payments-2026-09-17/EXPERIENCE.md
 status: final
-project_name: bf-recurring-payments
+project_name: Sarati
 created: 2026-09-17
-updated: 2026-09-17
+updated: 2026-09-18
 ---
 
-# bf-recurring-payments - Epic Breakdown
+# Sarati — Epic Breakdown
 
 ## Overview
 
-This document provides the complete epic and story breakdown for bf-recurring-payments, decomposing the requirements from the PRD, UX Design if it exists, and Architecture requirements into implementable stories.
+This document provides the complete epic and story breakdown for **Sarati** (local planning slug `bf-recurring-payments`; domain sarati.net), decomposing the requirements from the PRD, UX Design if it exists, and Architecture requirements into implementable stories.
 
 ## Requirements Inventory
 

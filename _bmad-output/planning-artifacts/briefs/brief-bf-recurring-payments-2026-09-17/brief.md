@@ -1,17 +1,28 @@
 ---
-title: Product Brief — bf-recurring-payments
+title: Product Brief — Sarati
 status: complete
 created: 2026-09-17
-updated: 2026-09-17
+updated: 2026-09-18
 ---
 
-# Product Brief: bf-recurring-payments
+# Product Brief: Sarati
 
 Founder planning brief for a greenfield receivables-and-consent platform. Purpose: lock the product stance so a PRD can be written next. Not a VC deck.
 
+## Product identity
+
+| | |
+| --- | --- |
+| **Product name** | **Sarati** |
+| **Etymology** | Dioula/Jula — *sarati* means agreement / contract / terms (trust + subscription/billing fit) |
+| **Primary domain** | **sarati.net** (purchased by the product owner) |
+| **Market** | Burkina Faso first; multi-country / multi-currency architecture later |
+| **Planning repo** | https://github.com/usfaa444/subscription-bmad-planning |
+| **Local folder slug** | `bf-recurring-payments` (unchanged; document content uses Sarati) |
+
 ## Executive Summary
 
-**bf-recurring-payments** is a Burkina Faso–first platform that lets any business collect weekly or monthly money without building a billing stack. A cleaner, tutor, gym, school, mosque, or small app should enroll a client by phone, send a bill, and get paid on the agreed day.
+**Sarati** is a Burkina Faso–first platform that lets any business collect weekly or monthly money without building a billing stack. A cleaner, tutor, gym, school, mosque, or small app should enroll a client by phone, send a bill, and get paid on the agreed day.
 
 It is **one product with two skins**, not two systems. App merchants create a Hosted Checkout Session (Stripe-like URL + webhook). Offline merchants use a web portal and SMS. Both share the same consent and checkout state machine: identify → consent → method → confirm.
 

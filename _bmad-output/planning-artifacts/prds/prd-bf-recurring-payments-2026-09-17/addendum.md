@@ -1,10 +1,10 @@
 ---
-title: BF Recurring Payments — PRD addendum
+title: Sarati — PRD addendum
 created: 2026-09-17
-updated: 2026-09-17
+updated: 2026-09-18
 ---
 
-# Addendum — BF Recurring Payments PRD
+# Addendum — Sarati PRD
 
 Depth that does not belong in `prd.md`: technical-how, rejected alternatives, NEXT/LATER catalogs, landscape citations, and persona color. **MVP floor remains the PRD §6 and brief Scope.** This file is not a second source of truth for in-scope FRs.
 
@@ -116,3 +116,10 @@ Awa, Fatou, and Adama live in PRD UJ-1–UJ-3. Extra color only:
 - `_bmad-output/brainstorming/brainstorm-bf-recurring-payments-2026-09-17/brainstorm-intent.md`
 - Headless product-owner locks (take-rate, Orange path, Pass-through, KYC gate, SMS/STOP, USSD, Payout Clock, one account)
 - Discovery landscape scan (2026-09-17)
+
+---
+
+## Brand identity (2026-09-18)
+
+**Addendum note — 2026-09-18:** Product named **Sarati** (Dioula/Jula: agreement / contract / terms). Domain **sarati.net** acquired by the product owner. Does not change FRs, NFRs, MVP scope, or Out of Scope lists — only product identity. Public hostnames (checkout / merchant portal / customer surfaces) are recommendations under architecture, not claimed as live.
+

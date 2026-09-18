@@ -1,8 +1,8 @@
 ---
-title: Product Brief Addendum — bf-recurring-payments
+title: Product Brief Addendum — Sarati
 status: complete
 created: 2026-09-17
-updated: 2026-09-17
+updated: 2026-09-18
 ---
 
 # Addendum — depth parked from the brief
@@ -212,3 +212,10 @@ Carry these; they already shape the brief. Restated so a PRD author does not hav
 8. Whether “one merchant account = portal + API” ships in the same increment as the two skins.
 
 Do not start architecture from these; they are PRD discovery prompts.
+
+---
+
+## Brand identity (2026-09-18)
+
+**Addendum note — 2026-09-18:** The product is named **Sarati** (Dioula/Jula: agreement / contract / terms). Primary domain **sarati.net** has been acquired by the product owner. Burkina Faso remains first market; multi-country / multi-currency architecture stays as planned. This does not change Scope, MVP MUST, or rejected alternatives above — only product identity and public web presence naming.
+

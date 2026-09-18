@@ -1,8 +1,8 @@
 ---
-name: BF Recurring Payments
-description: Visual identity for a Burkina Faso receivables-and-consent OS — Merchant Portal, Hosted Checkout, and SMS — shadcn/ui brand-layer only.
+name: Sarati
+description: Visual identity for Sarati — Burkina Faso receivables-and-consent OS — Merchant Portal, Hosted Checkout, and SMS — shadcn/ui brand-layer only.
 status: final
-updated: 2026-09-17
+updated: 2026-09-18
 colors:
   # Brand-layer overrides. Unlisted shadcn tokens (background, foreground, muted,
   # muted-foreground, popover, card, border, input, ring, destructive) inherit.
@@ -118,11 +118,14 @@ components:
     radius: '{rounded.lg}'
 ---
 
-# BF Recurring Payments — Design Spine
+# Sarati — Design Spine
 
 > Visual identity for the dual-channel receivables-and-consent OS. Paired with `EXPERIENCE.md`. Inherits shadcn/ui + Tailwind on Next.js (`apps/portal`, `apps/checkout`). This file specifies the brand-layer delta only. Spines win on conflict with any mock.
 
 ## Brand & Style
+
+**Product:** Sarati · **Domain:** sarati.net · Trust chrome remains Merchant name + neighbourhood (public wordmark may use Sarati).
+
 
 This product is a neighbourhood shop's ledger that happens to live on a phone — not a neon fintech, not a card network, not a Super-App. The visual job is to make money conversations feel **named, calm, and local**: Awa's shop name and neighbourhood do more trust work than any platform wordmark.
 

@@ -172,3 +172,10 @@ The brainstorm did **not** produce a product brief, PRD, or architecture. This i
 - The entire LATER / WON’T list above (tontine, B2B credit, license, Super-App, etc.)
 
 **Do carry forward:** the spine, the two-sided job, the unified consent/checkout primitive, the four chosen directions, and the MVP MUST list as the opportunity floor.
+
+---
+
+## Later naming note (2026-09-18)
+
+After this brainstorm, the product was named **Sarati** (Dioula/Jula: agreement / contract / terms) with primary domain **sarati.net**. This brainstorm did **not** invent or select that name — the note is historical only so downstream readers connect this intent file to the branded planning docs.
+

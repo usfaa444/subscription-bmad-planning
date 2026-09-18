@@ -1,15 +1,15 @@
 ---
-name: BF Recurring Payments
+name: Sarati
 status: final
 sources:
   - "{planning_artifacts}/prds/prd-bf-recurring-payments-2026-09-17/prd.md"
   - "{planning_artifacts}/prds/prd-bf-recurring-payments-2026-09-17/addendum.md"
   - "{planning_artifacts}/architecture/architecture-bf-recurring-payments-2026-09-17/ARCHITECTURE-SPINE.md"
   - "{planning_artifacts}/briefs/brief-bf-recurring-payments-2026-09-17/brief.md"
-updated: 2026-09-17
+updated: 2026-09-18
 ---
 
-# BF Recurring Payments — Experience Spine
+# Sarati — Experience Spine
 
 > Behavioral contract for the dual-channel receivables-and-consent OS. Paired with `DESIGN.md`. Glossary terms from the PRD are used verbatim. Never say "user" — say **Customer** or **Merchant**. Spines win on conflict with any mock.
 
@@ -29,7 +29,7 @@ Multi-surface, no native apps:
 
 Locale, currency display, MSISDN parse, and holidays come from the BF **CountryPack**. French-first everywhere a Merchant or Customer can read. English only in developer technical identifiers (`code`, route names), never on checkout or SMS.
 
-**[ASSUMPTION]** Light-only. Public brand wordmark unlocked — trust chrome is Merchant name + neighbourhood.
+**[ASSUMPTION]** Light-only. Product brand is **Sarati** (sarati.net). Trust chrome on Customer surfaces remains Merchant name + neighbourhood; Sarati wordmark may appear as platform chrome.
 
 ## Information Architecture
 

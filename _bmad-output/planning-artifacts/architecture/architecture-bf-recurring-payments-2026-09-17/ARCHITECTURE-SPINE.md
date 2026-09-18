@@ -1,5 +1,5 @@
 ---
-name: bf-recurring-payments
+name: Sarati
 type: architecture-spine
 purpose: build-substrate
 altitude: initiative
@@ -7,7 +7,7 @@ paradigm: hexagonal
 scope: Dual-channel receivables-and-consent OS — Hosted Checkout Session API, Merchant Portal, SMS verbs; BF production; multi-country sockets
 status: final
 created: 2026-09-17
-updated: 2026-09-17
+updated: 2026-09-18
 binds: [FR-1–FR-56, NFR-1–NFR-12]
 sources:
   - _bmad-output/planning-artifacts/prds/prd-bf-recurring-payments-2026-09-17/prd.md
@@ -17,7 +17,31 @@ sources:
 companions: []
 ---
 
-# Architecture Spine — bf-recurring-payments
+# Architecture Spine — Sarati
+
+## Product identity
+
+| | |
+| --- | --- |
+| **Product name** | **Sarati** |
+| **Etymology** | Dioula/Jula — *sarati* means agreement / contract / terms |
+| **Primary domain** | **sarati.net** (purchased by the product owner; public web presence) |
+| **Market** | Burkina Faso first; multi-country / multi-currency sockets later |
+| **Planning repo** | https://github.com/usfaa444/subscription-bmad-planning |
+
+### Recommended public hostnames (not live)
+
+These are **recommendations** for when surfaces are deployed under sarati.net. They are not claimed as already provisioned or live:
+
+| Surface | Suggested hostname |
+| --- | --- |
+| Marketing / product home | `sarati.net` / `www.sarati.net` |
+| Merchant Portal | `app.sarati.net` |
+| Hosted Checkout Page | `checkout.sarati.net` |
+| Customer pay / Magic Link landing (if split from checkout) | `pay.sarati.net` |
+| Public API (optional) | `api.sarati.net` |
+
+Exact DNS and TLS cutover are ops/implementation; architecture only recommends subdomain roles so CountryPack and surface apps do not invent alternate brand domains.
 
 ## Design Paradigm
 
